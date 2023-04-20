@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=table, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ddd;
+        }
+        .container{
+            padding: 30px;
+            background: #F8EFBA;
+            border: solid 2px #CAD3C8;
+            border-radius: 20px;
+            font-family: 'Tilt Neon', cursive;
+            box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+        }
+        input{
+            width: 75px;
+            height: 75px;
+            font-size: 20px;
+            border: none;
+            color: #fff;
+            background: #2d3436;
+            margin: 0px 5px 5px 0px;
+            border-radius: 10px;
+            font-family: 'Tilt Neon', cursive;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        }
+        input[value="="]{
+            height: 157px;
+        }
+        input[value="0"]{
+            width: 157px;
+        }
+        input[value="C"]{
+            background: #ff4757;
+        }
+        input[value="<"]{
+            background: #ff4757;
+        }
+        input[type="text"]{
+            width: 320px;
+            height: 50px;
+            background: #BDC581;
+            color: #2d3436;
+            margin-bottom: 15px;
+            text-align: right;
+            padding-right: 20px;
+            box-shadow: none;
+        }
+        h1{
+            width: 300px;
+            font-size: 15px;
+            text-align: center;
+            margin-left: 10px;
+            margin-bottom: 10px ;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <table>
+            <tr>
+                <td colspan="4"><h1>ELECTRONIC CALCULATOR</h1></td>
+            </tr>
+            <tr>
+                <td colspan="4"><input type="text"></td>
+            </tr>
+            <tr>
+                <td onclick="xoa()"><input type="button" value="C"></td>
+                <td onclick="xoa1()"><input type="button" value="<"></td>
+                <td onclick="add('/')"><input type="button" value="/"></td>
+                <td onclick="add('*')"><input type="button" value="X"></td>
+            </tr>
+            <tr>
+                <td onclick="add('7')"><input type="button" value="7"></td>
+                <td onclick="add('8')"><input type="button" value="8"></td>
+                <td onclick="add('9')"><input type="button" value="9"></td>
+                <td onclick="add('-')"><input type="button" value="-"></td>
+            </tr>
+            <tr>
+                <td onclick="add('4')"><input type="button" value="4"></td>
+                <td onclick="add('5')"><input type="button" value="5"></td>
+                <td onclick="add('6')"><input type="button" value="6"></td>
+                <td onclick="add('+')"><input type="button" value="+"></td>
+            </tr>
+            <tr>
+                <td onclick="add('1')"><input type="button" value="1"></td>
+                <td onclick="add('2')"><input type="button" value="2"></td>
+                <td onclick="add('3')"><input type="button" value="3"></td>
+                <td rowspan="2" onclick="tinh()"><input type="button" value="="></td>
+            </tr>
+            <tr>
+                <td colspan="2" onclick="addso('0')"><input type="button" value="0"></td>
+                <td onclick="add('.')"><input type="button" value="."></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        let kq=document.querySelector(".container input[type='text']")
+        function add(value){
+            kq.value += value
+        }
+        function xoa(value){
+            kq.value = ""
+        }
+        function xoa1(value){
+            kq.value = kq.value.slice(0,-1)
+        }
+        function tinh(value){
+            if(kq.value){
+                kq.value = Math.round(eval(kq.value)*100)
+                kq.value = kq.value/100
+            }
+        }
+    </script>
+</body>
+</html>
